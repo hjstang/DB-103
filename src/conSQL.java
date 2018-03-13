@@ -1,7 +1,9 @@
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
 public class conSQL {
 	//må legge inn url her
@@ -13,16 +15,22 @@ public class conSQL {
 	
 	
 	
-	@Override
-	public void createNewNurse(Nurse nurse) throws SQLException{
-		try {
-			Statement stmt = getStatement();
-			String faculty = nurse.getFaculty();
-			String query = "INSERT INTO helsesoster(brukernavn, passord, fakultet, fornavn"
-					+ ", etternavn, email, telefonNr) VALUES ('" + nurse.getUsername() + "', '" +
-					nurse.getPassword() + "', " + switchInsert(faculty) + ", '" + nurse.getFirstName()
-					+ "', '" + nurse.getSecondName() + "', '" + nurse.getEmail() + "', " + 
-					nurse.getPhoneNumber() + ");";
+@Override
+public void createNewTreningsokt(Treningsokt treningsokt) throws SQLException{
+	try {
+		Statement stmt = getStatement();
+		int treningsID = treningsokt.getTreningsID();
+			int dato = treningsokt.getDato();
+			int tidspunkt = treningsokt.getTidspunkt();
+			int varighet = treningsokt.getVarighet();
+			String infoOmOvelser = treningsokt.getInfoOmOvelser();
+			int prestasjon = treningsokt.getPrestasjon();
+			int personligForm = treningsokt.getPersonligForm();
+			String query = "INSERT INTO Treningsøkt(TreningsID, Tato, Tidspunkt, Varighet, InfoOmØvelser, PersonligForm, Prestasjon"
+					+ ") VALUES ('" + treningsokt.getTreningsID() + "', '" +
+					treningsokt.getDato() + "', " + treningsokt.getTidspunkt() + ", '" + treningsokt.getVarighet()
+					+ "', '" + treningsokt.getInfoOmOvelser() + "', '" + treningsokt.getPrestasjon() + "', " + 
+					treningsokt.getPersonligForm() + ");";
 			
 			stmt.executeUpdate(query);
 			System.out.println(query);
@@ -41,12 +49,12 @@ public class conSQL {
 
 
 	@Override
-	public Nurse getNurse(String username) throws SQLException {
+	public Treningsokt getTreningsøkt(int treningsID) throws SQLException {
 			
 			ResultSet rs = null;
-			Nurse nurse = new Nurse(username);
+			Treningsokt treningsokt = new Treningsokt(1, 0, 0, 0, "test", 0, 0);
 			try {
-				String query = "SELECT * FROM helsesoster WHERE brukernavn='" + username +"';";
+				String query = "SELECT * FROM Treningsokt WHERE TreningsID='" + treningsID +"';";
 				Statement stmt = getStatement();
 				
 				if(stmt.execute(query)) {
@@ -54,7 +62,7 @@ public class conSQL {
 					
 					if (!rs.isBeforeFirst() ) {    
 					    System.out.println("No data"); 
-					    throw new IllegalStateException("Denne brukeren eksisterer ikke i databasen"); //Dette er burde vi endre på slik at den kanskje returnerer null isteden
+					    throw new IllegalStateException("Denne treningsøkten eksisterer ikke i databasen"); //Dette er burde vi endre på slik at den kanskje returnerer null isteden
 					} 
 				}
 			}
@@ -62,27 +70,8 @@ public class conSQL {
 				System.out.println("SQLException: " + e.getMessage());
 			}
 			
-			while(rs.next()) {
-				String password = rs.getString("passord");
-				nurse.setPassword(password);
-				
-				Integer faculty = rs.getInt("fakultet");
-				nurse.setFaculty(switchFakultetIDtoName(faculty));
-				
-				String firstName = rs.getString("fornavn");
-				nurse.setFirstName(firstName);
-				
-				String secondName = rs.getString("etternavn");
-				nurse.setSecondName(secondName);
-				
-				String email = rs.getString("email");
-				nurse.setEmail(email);
-				
-				String phoneNumber = rs.getString("telefonNr");
-				nurse.setPhoneNumber(phoneNumber);
-			}
 			
-			return nurse; 
+			return treningsokt; 
 		}
 	
 	
