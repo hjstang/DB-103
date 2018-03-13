@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="/Users/janinestang/git/DB-103/mysql-connector-java-5.1.46-bin.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="/Users/NoraKallager/git/DB-103/mysql-connector-java-5.1.46-bin.jar"/>
+=======
+	<classpathentry kind="lib" path="/Users/cathrineakreaas/git/DB-103/mysql-connector-java-5.1.46-bin.jar"/>
+>>>>>>> branch 'master' of https://github.com/helenejs/DB-103.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
