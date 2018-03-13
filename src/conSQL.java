@@ -98,7 +98,7 @@ public void createNewTreningsokt(Treningsokt treningsokt) throws SQLException{
             foreignKeyRS.next();
             int foreignKey = foreignKeyRS.getInt(1);
             stmnt.executeUpdate("insert into ØvelseFri(ØvelseID, Beskrivelse) values('" + foreignKey + "','" + beskrivelse + "')");
-            System.out.println("Lagde ny friøvelse.");
+            System.out.println("Ny friøvelse ble laget.");
             stmnt.close();
         } catch(Exception e) {
             System.out.println("Kunne ikke lage ny øvelse.");
@@ -117,7 +117,7 @@ public void createNewTreningsokt(Treningsokt treningsokt) throws SQLException{
             foreignKeyApparatRS.next();
             int foreignKeyApparat = foreignKeyApparatRS.getInt(1);
             stmnt.executeUpdate("insert into ØvelseApparat(ØvelseID, ApparatID, Vekt, Sett) values('" + foreignKey + "','" + foreignKeyApparat + "','" + vekt + "','" + sett + "')");
-            System.out.println("Lagde ny apparatøvelse.");
+            System.out.println("Ny apparatøvelse er laget.");
             stmnt.close();
         } catch(Exception e) {
             System.out.println("Kunne ikke lage ny øvelse.");
@@ -125,10 +125,10 @@ public void createNewTreningsokt(Treningsokt treningsokt) throws SQLException{
         }
     }
     
-    public void addØkt(int brukerID, int varighet, int personligForm, int personligPrestasjon) {
+    public void addØkt(int TreningsID, int varighet, int personligForm, int personligPrestasjon) {
     	try {
     		Statement stmnt = (Statement) con.createStatement();
-    		stmnt.executeUpdate("insert into Økt(BrukerID, DatoTid, Varighet, PersonligForm, PersonligPrestasjon) values ('" + brukerID + "', now(),'" + varighet + "','" + personligForm + "','" + personligPrestasjon + "')");
+    		stmnt.executeUpdate("insert into Treningsøkt(TreningsID, Dato, Varighet, PersonligForm, PersonligPrestasjon) values ('" + TreningsID + "', now(),'" + varighet + "','" + personligForm + "','" + personligPrestasjon + "')");
     	
     	} catch(Exception e) {
             System.out.println("Kunne ikke lage ny økt."); 
