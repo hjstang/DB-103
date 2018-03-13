@@ -5,10 +5,10 @@ import com.mysql.jdbc.Connection;
 
 public class conSQL {
 	
-	private final String dbURL;
+	private final String dbURL= "";
 	 
 	private Connection getConnection() throws SQLException{
-		return DriverManager.getConnection(dbURL);
+		return (Connection) DriverManager.getConnection(dbURL);
 	}
 	
 
