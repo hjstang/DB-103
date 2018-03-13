@@ -1,5 +1,5 @@
 
-public class treningsokt {
+public class Treningsokt {
 	
 	
 	public int treningsID;
@@ -10,7 +10,7 @@ public class treningsokt {
 	public int personligForm;
 	public int prestasjon;
 	
-	public treningsokt(int treningsID, int dato, int tidspunkt, int varighet, String infoOmOvelser, int personligForm,
+	public Treningsokt(int treningsID, int dato, int tidspunkt, int varighet, String infoOmOvelser, int personligForm,
 			int prestasjon) {
 		super();
 		this.treningsID = treningsID;
