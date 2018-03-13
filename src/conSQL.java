@@ -8,13 +8,15 @@ import com.mysql.jdbc.Statement;
 public class conSQL {
 	//må legge inn url her
 	private final String dbURL= "";
+	private Connection con;
 	 
 	private Connection getConnection() throws SQLException{
-		return (Connection) DriverManager.getConnection(dbURL);
+		this.con = (Connection) DriverManager.getConnection(dbURL);
+		return con;
 	}
 	
 	
-	
+	/*
 @Override
 public void createNewTreningsokt(Treningsokt treningsokt) throws SQLException{
 	try {
@@ -74,8 +76,69 @@ public void createNewTreningsokt(Treningsokt treningsokt) throws SQLException{
 			return treningsokt; 
 		}
 	
-	
+	*/
 
+    public void addApparat(String navn, String beskrivelse) {
+        try {
+            Statement stmnt = (Statement) con.createStatement();
+            stmnt.executeUpdate("insert into Apparat(Navn, Beskrivelse) values('" + navn + "', '" + beskrivelse + "')");
+            System.out.println("Lagde nytt apparat.");
+            stmnt.close();
+        } catch(Exception e) {
+            System.out.println("Kunne ikke lage apparat.");
+            e.printStackTrace();
+        }
+    }
+
+    public void addØvelseFri(String navn, String beskrivelse) {
+        try {
+            Statement stmnt = (Statement) con.createStatement();
+            stmnt.executeUpdate("insert into Øvelse(Navn) values('" + navn + "')");
+            ResultSet foreignKeyRS = stmnt.executeQuery("select last_insert_id()");
+            foreignKeyRS.next();
+            int foreignKey = foreignKeyRS.getInt(1);
+            stmnt.executeUpdate("insert into ØvelseFri(ØvelseID, Beskrivelse) values('" + foreignKey + "','" + beskrivelse + "')");
+            System.out.println("Lagde ny friøvelse.");
+            stmnt.close();
+        } catch(Exception e) {
+            System.out.println("Kunne ikke lage ny øvelse.");
+            e.printStackTrace();
+        }
+    }
+
+    public void addØvelseApparat(String navn, String apparatNavn, int vekt, int sett) {
+        try {
+            Statement stmnt = (Statement) con.createStatement();
+            stmnt.executeUpdate("insert into Øvelse(Navn) values('" + navn + "')");
+            ResultSet foreignKeyRS = stmnt.executeQuery("select last_insert_id()");
+            foreignKeyRS.next();
+            int foreignKey = foreignKeyRS.getInt(1);
+            ResultSet foreignKeyApparatRS = stmnt.executeQuery("select ApparatID from Apparat where Navn = '" + apparatNavn + "'");
+            foreignKeyApparatRS.next();
+            int foreignKeyApparat = foreignKeyApparatRS.getInt(1);
+            stmnt.executeUpdate("insert into ØvelseApparat(ØvelseID, ApparatID, Vekt, Sett) values('" + foreignKey + "','" + foreignKeyApparat + "','" + vekt + "','" + sett + "')");
+            System.out.println("Lagde ny apparatøvelse.");
+            stmnt.close();
+        } catch(Exception e) {
+            System.out.println("Kunne ikke lage ny øvelse.");
+            e.printStackTrace();
+        }
+    }
+    
+    public void addØkt(int brukerID, int varighet, int personligForm, int personligPrestasjon) {
+    	try {
+    		Statement stmnt = (Statement) con.createStatement();
+    		stmnt.executeUpdate("insert into Økt(BrukerID, DatoTid, Varighet, PersonligForm, PersonligPrestasjon) values ('" + brukerID + "', now(),'" + varighet + "','" + personligForm + "','" + personligPrestasjon + "')");
+    	
+    	} catch(Exception e) {
+            System.out.println("Kunne ikke lage ny økt."); 
+            e.printStackTrace();
+        }
+    }
+
+    public String test() {
+        return "Test";
+    }
 	
 	
 	
