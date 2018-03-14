@@ -176,4 +176,8 @@ public class ConnectionSQL {
 		
 	}
 	
+	public String getØvelsesgruppe() throws SQLException{
+		
+	}
+	
 }
