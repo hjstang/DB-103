@@ -175,9 +175,6 @@ public class ConnectionSQL {
 		return out;
 		
 	}
-	
-	public String getØvelsesgruppe() throws SQLException{
-		
-	}
+
 	
 }
