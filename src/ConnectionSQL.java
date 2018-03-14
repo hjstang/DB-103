@@ -118,13 +118,13 @@ public class ConnectionSQL {
 		out+="+\n";
 		//Styrkeøkt
 		ResultSet myRes1=myStmt.executeQuery("select Økt.Dato, Økt.Tidspunkt, Varighet, PersonligForm, Prestasjon,"
-				+ " Notat, Navn, AntallKilo, AntallSett, Belasting from noragk_db_treningsdagbok.Økt join"
-				+ " sverress_prosjek_treningsdagbok.Styrkeøkt where Økt.Dato=Styrkeøkt.Dato And"
-				+ " Økt.Klokkeslett=Styrkeøkt.Klokkeslett and Økt.Dato >= curdate() - INTERVAL DAYOFWEEK(curdate())+6"
+				+ " Notat, Navn, AntallKilo, AntallSett, Belasting from noragk_db_treningsdagbok.Treningsøkt join"
+				+ " noragk_db_treningsdagbok.Notat where Økt.Dato=Notat.Dato And"
+				+ " Treningsøkt.Tidspunkt=Notat. and Økt.Dato >= curdate() - INTERVAL DAYOFWEEK(curdate())+6"
 				+ " DAY order by Prestasjon DESC, PersonligForm desc limit 1;");
 		String format1="|%-20s|%-20s|%-20s|%-20s|%-20s|%-60s|%-20s|%20s|%20s|%20s|\n";
 		out+=String.format(format1, "Dato","Klokkeslett","Varighet","PersonligForm","Prestasjon","Notat",
-				"ØvelseNavn","AntallRep","AntallSet","Belastning");
+				"ØvelseNavn","AntallKilo","AntallSet","Belastning");
 		out+="+";
 		for(int i=0;i<(9*20+60+9);i++){
 			out+="-";
@@ -133,7 +133,7 @@ public class ConnectionSQL {
 		while(myRes1.next()){
 			out+=String.format(format1,myRes1.getString("Dato"),myRes1.getString("Klokkeslett"),
 					myRes1.getString("Varighet"),myRes1.getString("PersonligForm"),myRes1.getString("Prestasjon"),
-					myRes1.getString("InfoOmØvelse"),myRes1.getString("Navn"),myRes1.getString("AntallRep"),
+					myRes1.getString("InfoOmØvelse"),myRes1.getString("Navn"),myRes1.getString("AntallKilo"),
 					myRes1.getString("AntallSett"),myRes1.getString("Belasting"));
 		}
 		out+="+";
