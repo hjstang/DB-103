@@ -35,7 +35,7 @@ public class ConnectionSQL {
 		return out;
 	}
 	
-	public String Øvelse(ResultSet myRs) throws SQLException{
+	public String printØvelse(ResultSet myRs) throws SQLException{
 		String format="|%-20s|%-20s|%-20s|\n";
 		String out=String.format(format, "Navn");
 		out+="+--------------------------------------------------------------+\n";
@@ -47,7 +47,7 @@ public class ConnectionSQL {
 		return out;
 	}
 	
-	public String Notat(ResultSet myRs) throws SQLException{
+	public String printNotat(ResultSet myRs) throws SQLException{
 		String format="|%-20s|\n";
 		String out="+--------------------+\n";
 		out+=String.format(format, "Treningsformål", "Opplevelse");
@@ -117,8 +117,8 @@ public class ConnectionSQL {
 		}
 		out+="+\n";
 		//Styrkeøkt
-		ResultSet myRes1=myStmt.executeQuery("select Økt.Dato, Økt.Tidspunkt, Varighet, PersonligForm, Prestasjon,"
-				+ " Notat, Navn, AntallKilo, AntallSett, Belasting from noragk_db_treningsdagbok.Treningsøkt join"
+		ResultSet myRes1=myStmt.executeQuery("select Treningsøkt.Dato, Treningsøkt.Tidspunkt, Varighet, PersonligForm, Prestasjon,"
+				+ " Notat.Treningsformål, Notat.Opplevelse from noragk_db_treningsdagbok.Treningsøkt join"
 				+ " noragk_db_treningsdagbok.Notat where Økt.Dato=Notat.Dato And"
 				+ " Treningsøkt.Tidspunkt=Notat. and Økt.Dato >= curdate() - INTERVAL DAYOFWEEK(curdate())+6"
 				+ " DAY order by Prestasjon DESC, PersonligForm desc limit 1;");
