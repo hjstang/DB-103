@@ -15,7 +15,14 @@ public class conSQL {
 		return con;
 	}
 	
+	public void closeConnection() throws SQLException {
+		getConnection().close();
+	}
 	
+	private Statement getStatement() throws SQLException{
+		Connection conn = getConnection();
+		return conn.createStatement();
+	}
 	/*
 @Override
 public void createNewTreningsokt(Treningsokt treningsokt) throws SQLException{
