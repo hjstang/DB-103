@@ -1,11 +1,12 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Treningsdagbok {
 	
-	private Scanner in = new Scanner(System.in);
+	private Scanner scanner = new Scanner(System.scanner);
 	private ConnectionSQL sql = new ConnectionSQL(); 
 	
 	
@@ -15,42 +16,39 @@ public class Treningsdagbok {
 		ArrayList<String> øktData = new ArrayList<>(); 
 		
 		System.out.println("Du valgte insetting, hvilken dato var treningen? (yyyymmdd)"); //henter øktdata 
-		øktData.add(in.next()); 
+		øktData.add(scanner.next()); 
 		
 		System.out.println("Når startet økten? (hhmmss)");
-		øktData.add(in.next()); 
+		øktData.add(scanner.next()); 
 		
 		System.out.println("Varighet? (hhmmss)");
-		øktData.add(in.next());
+		øktData.add(scanner.next());
 		
 		System.out.println("Info om øvelser? ");
-		øktData.add(in.next());
+		øktData.add(scanner.next());
 		
 		System.out.println("Personlig form? (1-10)");
-		øktData.add(in.next());
+		øktData.add(scanner.next());
 		
 		System.out.println("Prestasjon? (1-10)");
-		øktData.add(in.next());
+		øktData.add(scanner.next());
 		
-		in.nextLine(); // to prevent missing a input
+		scanner.nextLine(); // to prevent missing a input
 		
 		System.out.println("Notat til økten? (JA/NEI)");
-		type = in.next();
+		type = scanner.next();
 		if (type.equals("JA")) {
 			query = "Intert into Notater values (";
 			System.out.println("Trenignsformål? " );
-			query += "'" + in.nextLine() + "', ";
+			query += "'" + scanner.nextLine() + "', ";
 			System.out.println("Opplevelse? ");
-			query += in.next() + "," + øktData.get(0) + "," + øktData.get(1) +");";
+			query += scanner.next() + "," + øktData.get(0) + "," + øktData.get(1) +");";
 			
 			System.out.println(query);
 			sql.runUpdate(query); 
 			
 		}
-		øktData.add("'" + in.nextLine() + "'");	
-		
-		System.out.println("Skal det være en mal? (TRUE/FALSE)");
-		øktData.add(in.next());
+		øktData.add("'" + scanner.nextLine() + "'");	
 		
 		query = "insert into Økt values (";   			//lager query med dataene for økt via for-løkke
 		
@@ -67,7 +65,7 @@ public class Treningsdagbok {
 		
 		do{ 																							// legger til øvelser i økten 
 			System.out.println("Ønsker du å legge til en friøvelse- eller apparatøvelse? (F/A)");
-			answer = in.next(); 
+			answer = scanner.next(); 
 			
 			if (answer.equals("F")){
 				addØvelseFri(øktData.get(0), øktData.get(1)); 
@@ -76,11 +74,17 @@ public class Treningsdagbok {
 			}
 			
 			System.out.println("Vil du legge til flere øvelser? (ja/nei)");				// spør om innsetting skal avsluttes
-			answer = in.next(); 
+			answer = scanner.next(); 
 			
 		} while (answer.equals("ja")); 
 		
 	}
+	
+	public void getNumber() throws Exception{
+		System.out.println("Hvor mange treningsøkter ønsker du å se?" );
+		
+	}
+	
     public void addApparat(String navn, String beskrivelse) {
         try {
             Statement stmnt = (Statement) con.createStatement();
@@ -137,6 +141,10 @@ public class Treningsdagbok {
             System.out.println("Kunne ikke lage ny økt."); 
             e.printStackTrace();
         }
+    }
+    
+    public void addØvelsesgruppe() {
+    		// trenger kode!!!!!!
     }
 
 }
