@@ -1,8 +1,22 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
 
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="getDatabaseController">
+   <children>
+      <TableView fx:id="displayDBDataTable" layoutX="200.0" layoutY="161.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="getNLastWorkoutsButton" layoutX="66.0" layoutY="46.0" mnemonicParsing="false" onAction="#displayNLastWorkouts" text="Get n last workouts" />
+      <TextField fx:id="getNLastWorkoutsField" layoutX="211.0" layoutY="46.0" promptText="How many workouts?" />
+   </children>
+</Pane>
