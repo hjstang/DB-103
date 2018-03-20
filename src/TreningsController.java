@@ -24,8 +24,8 @@ public class TreningsController extends Application{
 		registerExerciseInGroupButton, registerExerciseInWorkoutButton, registerExerciseOnMachineButton;
 		
 		@FXML
-		TextField registerTreningsoktField, registerOvelseField, registerApparatField, registerOvelsesgruppeField,
-		registerOvelseIGruppeField,registrerOvelseITreningsokt, registerOvelsePaaApparatField;
+		TextField registrerTreningsoktFelt, registrerOvelseFelt, registrerApparatFelt, registrerOvelsesgruppeFelt,
+		registrerOvelseIGruppeFelt,registrerOvelseITreningsoktFelt, registrerOvelsePaaApparatFelt;
 		
 		public TreningsController() {
 			
@@ -35,7 +35,7 @@ public class TreningsController extends Application{
 		//register workout to databse
 		@FXML
 		public void registrerTreningsokt() throws SQLException {
-			List<String> input = Arrays.asList(registerTreningsoktField.getText().split(","));
+			List<String> input = Arrays.asList(registrerTreningsoktFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			List<String> dateString = Arrays.asList(input.get(0).split("-"));
 			int year = Integer.parseInt(dateString.get(0));
@@ -55,8 +55,8 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registerOvelse() throws SQLException {
-			List<String> input = Arrays.asList(registerOvelseField.getText().split(","));
+		public void registrerOvelse() throws SQLException {
+			List<String> input = Arrays.asList(registrerOvelseFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
 			String beskrivelse = input.get(1);
@@ -66,8 +66,8 @@ public class TreningsController extends Application{
 		}
 		
 		@FXML
-		public void registerApparat() throws SQLException {
-			List<String> input = Arrays.asList(registerApparatField.getText().split(","));
+		public void registrerApparat() throws SQLException {
+			List<String> input = Arrays.asList(registrerApparatFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
 			String beskrivelse = input.get(1);
@@ -78,8 +78,8 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registerExerciseGroup() throws SQLException {
-			List<String> input = Arrays.asList(registerOvelsesgruppeField.getText().split(","));
+		public void registrerOvelsesgruppe() throws SQLException {
+			List<String> input = Arrays.asList(registrerOvelsesgruppeFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
 			
@@ -89,8 +89,8 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registerExerciseInGroup() throws SQLException {
-			List<String> input = Arrays.asList(registerOvelseIGruppeField.getText().split(","));
+		public void registrerOvelseIGruppe() throws SQLException {
+			List<String> input = Arrays.asList(registrerOvelseIGruppeFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String groupName = input.get(0);
 			String exerciseName = input.get(1);
@@ -101,8 +101,8 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registerExerciseInWorkout() throws SQLException {
-			List<String> input = Arrays.asList(registrerOvelseITreningsokt.getText().split(","));
+		public void registrerOvelseITreningsokt() throws SQLException {
+			List<String> input = Arrays.asList(registrerOvelseITreningsoktFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			List<String> dateString = Arrays.asList(input.get(0).split("-"));
 			int year = Integer.parseInt(dateString.get(0));
@@ -119,8 +119,8 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registerExerciseOnMachine() throws SQLException {
-			List<String> input = Arrays.asList(registerOvelsePaaApparatField.getText().split(","));
+		public void registrerOvelsePaaApparat() throws SQLException {
+			List<String> input = Arrays.asList(registrerOvelsePaaApparatFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String exerciseName = input.get(0);
 			String machineName = input.get(1);
