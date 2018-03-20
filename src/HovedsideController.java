@@ -39,7 +39,7 @@ public class HovedsideController {
         Stage stage; 
         Parent root;    
         stage=(Stage) seInfoButton.getScene().getWindow();
-        HovedsideController controller= new HovedsideController();
+        HentDBInfo controller= new HentDBInfo();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HentDBInfo.fxml"));       
         loader.setController(controller);
         root = (Parent) loader.load();

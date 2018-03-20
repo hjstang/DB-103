@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6984E8;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HentDBInfo">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6984E8;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HentDBInfo">
    <children>
       <GridPane layoutX="59.0" layoutY="101.0" prefHeight="246.0" prefWidth="470.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="225.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="89.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
@@ -24,13 +24,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Hvor mange treningsøkter vil du se?&#10;(Skriv inn et heltall i boksen --&gt;)" textFill="#e8e2e2">
+            <Label prefHeight="36.0" prefWidth="286.0" text="Hvor mange treningsøkter vil du se?&#10;(Skriv inn et heltall i boksen --&gt;)" textFill="#e8e2e2">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="219.0" GridPane.columnIndex="1" />
-            <Label text="Se resultatlogg for alle øvelsene?&#10;(start-dato, slutt-dato)" textFill="#e8e2e2" GridPane.rowIndex="1">
+            <TextField fx:id="seOktFelt" prefHeight="27.0" prefWidth="141.0" GridPane.columnIndex="1" />
+            <Label text="Se resultatlogg for alle øvelsene?&#10;(start-dato, slutt-dato (dd.mm.åååå)" textFill="#e8e2e2" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
@@ -40,19 +40,19 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2">
+            <TextField fx:id="seResultatloggFelt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="seØvelseFelt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" text="Velg" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" text="Velg" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" text="Velg" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>
