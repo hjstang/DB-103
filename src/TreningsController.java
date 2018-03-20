@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import java.net.URL;
-=======
-	import java.net.URL;
->>>>>>> branch 'master' of https://github.com/helenejs/DB-103.git
+
 	import java.sql.Connection;
 	import java.sql.Date;
 	import java.sql.SQLException;
@@ -19,11 +15,9 @@ import java.net.URL;
 	import javafx.scene.control.TextField;
 	import javafx.stage.Stage;
 	
-<<<<<<< HEAD
+
 public class TreningsController extends Application{
-=======
-public class TreningsController {
->>>>>>> branch 'master' of https://github.com/helenejs/DB-103.git
+
 		
 		@FXML
 		Button registerWorkoutButton, registerExerciseButton, registerMachineButton, registerExcersiceGroupButton,
