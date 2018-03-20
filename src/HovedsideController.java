@@ -18,6 +18,9 @@ public class HovedsideController {
 	@FXML
 	Button registrerButton;
 	
+	@FXML
+	Button seInfoButton;
+	
 	@FXML 
 	public void handleRegistrerButton() throws SQLException, Exception {
         Stage stage; 
@@ -25,6 +28,20 @@ public class HovedsideController {
         stage=(Stage) registrerButton.getScene().getWindow();
         HovedsideController controller= new HovedsideController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Trening.fxml"));       
+        loader.setController(controller);
+        root = (Parent) loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+	}
+	
+	@FXML 
+	public void handleSeInfoButton() throws SQLException, Exception {
+        Stage stage; 
+        Parent root;    
+        stage=(Stage) seInfoButton.getScene().getWindow();
+        HovedsideController controller= new HovedsideController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HentDBInfo.fxml"));       
         loader.setController(controller);
         root = (Parent) loader.load();
         Scene scene = new Scene(root);
