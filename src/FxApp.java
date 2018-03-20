@@ -1,23 +1,12 @@
 
-import java.sql.Date;
-
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends ConnectionSQL{
-	
-	public void init() {
-		
-	}
-	
-	public void run() {
-		
-	}
-	
+public class FxApp extends Application {
 
-	
     @Override
     public void start(Stage primaryStage) throws Exception {
     		
@@ -30,5 +19,4 @@ public class Main extends ConnectionSQL{
     public static void main(String[] args) {
         launch(args);
     }
-
 }
