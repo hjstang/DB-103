@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6984E8;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HovedsideController">
    <children>
       <Label layoutX="54.0" layoutY="43.0" prefHeight="49.0" prefWidth="316.0" text="Treningsapp" textFill="#201453">
@@ -18,7 +17,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button fx:id="registrerButton" layoutX="54.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleRegistrerButton" prefHeight="33.0" prefWidth="105.0" text="Registrer her" />
+      <Button fx:id="registrerButton" layoutX="54.0" layoutY="266.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="105.0" text="Registrer her" />
       <Label layoutX="310.0" layoutY="132.0" prefHeight="105.0" prefWidth="282.0" text="Her kan du se&#10;- dine siste registrerte &#10;   treningsøktene&#10;- resultatlogg for en øvelse&#10;- øvelser i øvelsesgrupper" textFill="#e8e2e2">
          <font>
             <Font size="17.0" />

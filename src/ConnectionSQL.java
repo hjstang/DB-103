@@ -1,7 +1,7 @@
 import java.sql.*;
 import java.util.Properties;
 
-public class ConnectionSQL {
+public abstract class ConnectionSQL {
 	
 	protected Connection conn;
 	public ConnectionSQL() {

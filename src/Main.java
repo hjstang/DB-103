@@ -1,23 +1,24 @@
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import java.sql.Connection;
+import java.sql.SQLException;
 
-public class Main extends Application{
+
+public class Main extends ConnectionSQL{
+
+	public void init() {
+	}
 	
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-    		
-        Parent root_login = FXMLLoader.load(getClass().getResource("Hovedside.fxml"));
-        Scene scene_login = new Scene(root_login);
-        primaryStage.setScene(scene_login);
-        primaryStage.show();
-    }
-    
-    public static void main(String[] args) {
-        launch(args);
-    }
-
+	public void run() {
+	}
+	
+	
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection myConn = new Main().connect();
+		System.out.println("Testing");
+		/*Date dateStart = new Date(2017,4,4);
+		Date dateEnd = new Date(2019,4,4);
+		System.out.println(dateStart.getYear());
+		
+		System.out.println(AdminController.getExerciseResult(myConn, dateStart,dateEnd));*/
+	}
 }
