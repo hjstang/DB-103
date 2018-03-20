@@ -1,6 +1,3 @@
-
-public class Treningscontroller {
-
 	import java.net.URL;
 	import java.sql.Connection;
 	import java.sql.Date;
@@ -17,8 +14,8 @@ public class Treningscontroller {
 	import javafx.scene.control.Button;
 	import javafx.scene.control.TextField;
 	import javafx.stage.Stage;
-
-	public class TrainingController extends Application{
+	
+public class TreningsController {
 		
 		@FXML
 		Button registerWorkoutButton, registerExerciseButton, registerMachineButton, registerExcersiceGroupButton,
