@@ -28,45 +28,45 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#registerWorkout" prefHeight="26.0" prefWidth="164.0" text="Registrer treningsøkt">
+            <Button fx:id="registerWorkoutButton" mnemonicParsing="false" onAction="#registrerTreningsokt" prefHeight="26.0" prefWidth="190.0" text="Registrer treningsøkt">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#registerMachine" prefHeight="26.0" prefWidth="164.0" text="Registrer apparatøvelse" GridPane.rowIndex="2">
+            <Button fx:id="registerExerciseOnMachineButton" mnemonicParsing="false" onAction="#registrerApparat" prefHeight="26.0" prefWidth="190.0" text="Registrer apparatøvelse" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button fx:id="registerExerciseButton" mnemonicParsing="false" onAction="#registerExercise" prefHeight="26.0" prefWidth="164.0" text="Registrer friøvelse" GridPane.rowIndex="1">
+            <Button fx:id="registerExerciseButton" mnemonicParsing="false" onAction="#registrerOvelse" prefHeight="26.0" prefWidth="190.0" text="Registrer friøvelse" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button fx:id="registerExcersiceGroupButton" mnemonicParsing="false" onAction="#registerExerciseGroup" prefHeight="26.0" prefWidth="164.0" text="Registrer øvelsesgruppe" GridPane.rowIndex="3">
+            <Button fx:id="registerExcersiceGroupButton" mnemonicParsing="false" onAction="#registrerOvelsesgruppe" prefHeight="26.0" prefWidth="190.0" text="Registrer øvelsesgruppe" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button fx:id="registerExerciseInGroupButton" mnemonicParsing="false" onAction="#registerExerciseInGroup" prefHeight="26.0" prefWidth="166.0" text="Registrer øvelse i gruppe" GridPane.rowIndex="4" />
-            <Button fx:id="registerExerciseInWorkoutButton" mnemonicParsing="false" onAction="#registerExerciseInWorkout" prefHeight="26.0" prefWidth="166.0" text="Registrer apparat" GridPane.rowIndex="5" />
-            <TextField fx:id="registerWorkoutField" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" />
-            <TextField fx:id="registerExerciseField" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="registerMachineField" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="registerExerciseGroupField" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="registerExerciseInGroupButtonregisterExerciseInGroupField" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="registerExerciseInWorkoutField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="registerExerciseInGroupButton" mnemonicParsing="false" onAction="#registrerOvelseIGruppe" prefHeight="26.0" prefWidth="190.0" text="Registrer øvelse i gruppe" GridPane.rowIndex="4" />
+            <Button fx:id="registerMachineButton" mnemonicParsing="false" onAction="#registrerApparat" prefHeight="26.0" prefWidth="190.0" text="Registrer apparat" GridPane.rowIndex="5" />
+            <TextField fx:id="registrerTreningsoktFelt" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" />
+            <TextField fx:id="registrerOvelseFelt" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="registrerOvelsePaaApparatFelt" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="registrerOvelsesgruppeFelt" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="registrerOvelseIGruppeFelt" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="registrerApparatFelt" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label prefHeight="53.0" prefWidth="197.0" text="(dato, tidspunk, varighet,&#10; personlig form, prestajon, notat)" textFill="#e8e2e2" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="12.0" />
                </GridPane.margin>
             </Label>
-            <Label layoutX="440.0" layoutY="10.0" prefHeight="53.0" prefWidth="210.0" text="(navn, beskrivelse&#10;)&#10;" textFill="#e8e2e2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label layoutX="440.0" layoutY="10.0" prefHeight="53.0" prefWidth="210.0" text="(navn, beskrivelse)&#10;" textFill="#e8e2e2" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <padding>
                   <Insets left="12.0" />
                </padding>
             </Label>
-            <Label prefHeight="53.0" prefWidth="210.0" text="(navn, antall kilo, antall sett, &#10; apparat)" textFill="#e8e2e2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Label prefHeight="53.0" prefWidth="210.0" text="(navn, apparat)" textFill="#e8e2e2" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <padding>
                   <Insets left="12.0" />
                </padding>
@@ -81,7 +81,14 @@
                   <Insets left="12.0" />
                </padding>
             </Label>
-            <Label prefHeight="53.0" prefWidth="210.0" text="(øvelsesnavn, gruppenavn)" textFill="#e8e2e2" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Label prefHeight="53.0" prefWidth="210.0" text="(gruppenavn, øvelsesnavn)" textFill="#e8e2e2" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <padding>
+                  <Insets left="12.0" />
+               </padding>
+            </Label>
+            <Button fx:id="registerExerciseInWorkoutButton" mnemonicParsing="false" onAction="#registrerOvelseITreningsokt" prefHeight="26.0" prefWidth="190.0" text="Registrer øvelse i treningsøkt" GridPane.rowIndex="6" />
+            <TextField fx:id="registrerOvelseITreningsoktFelt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label prefHeight="53.0" prefWidth="210.0" text="(dato, øvelsesnavn, antall kilo, &#10;antall sett)" textFill="#e8e2e2" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <padding>
                   <Insets left="12.0" />
                </padding>

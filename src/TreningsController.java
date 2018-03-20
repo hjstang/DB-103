@@ -131,7 +131,7 @@ public class TreningsController extends Application{
 
 		@Override
 		public void start(Stage primaryStage) throws Exception {
-		    		FXMLLoader loader = new FXMLLoader(getClass().getResource("FxTraining.fxml"));
+		    		FXMLLoader loader = new FXMLLoader(getClass().getResource("Hovedside.fxml"));
 		    		Parent root = loader.load();
 		    		Scene scene = new Scene(root);
 		    		primaryStage.setScene(scene);

@@ -14,7 +14,6 @@ public class HovedsideController {
 	public HovedsideController() {
 	}
 
-	//Tilbakeknapp
 	@FXML
 	Button registrerButton;
 	
@@ -26,7 +25,7 @@ public class HovedsideController {
         Stage stage; 
         Parent root;    
         stage=(Stage) registrerButton.getScene().getWindow();
-        HovedsideController controller= new HovedsideController();
+        TreningsController controller= new TreningsController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Trening.fxml"));       
         loader.setController(controller);
         root = (Parent) loader.load();
