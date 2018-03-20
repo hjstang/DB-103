@@ -10,7 +10,7 @@ public static void main(String[] args) throws Exception {
 		Scanner in = new Scanner(System.in);
 		
 		do{
-			System.out.println("Hva øsnker du å gjøre? (Registrering av økt(1), Trenignsrapport(2), Resultatlogg(3), "
+			System.out.println("Hva ønsker du å gjøre? (Registrering av økt(1), Treningsrapport(2), Resultatlogg(3), "
 					+ "Lag øvelsesgrupper(4), Se øvelsesgrupper(5) Valgfritt usecase(6) )");
 			answer = in.next(); 
 
