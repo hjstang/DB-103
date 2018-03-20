@@ -1,7 +1,4 @@
-
-public class Treningscontroller {
-
-	import java.net.URL;
+import java.net.URL;
 	import java.sql.Connection;
 	import java.sql.Date;
 	import java.sql.SQLException;
@@ -17,8 +14,8 @@ public class Treningscontroller {
 	import javafx.scene.control.Button;
 	import javafx.scene.control.TextField;
 	import javafx.stage.Stage;
-
-	public class TrainingController extends Application{
+	
+public class TreningsController extends Application{
 		
 		@FXML
 		Button registerWorkoutButton, registerExerciseButton, registerMachineButton, registerExcersiceGroupButton,
@@ -62,7 +59,7 @@ public class Treningscontroller {
 			String navn = input.get(0);
 			String beskrivelse = input.get(1);
 			
-			AdminController.insertExercise(myConn, navn, beskrivelse);
+			AdminController.settinnOvelse(myConn, navn, beskrivelse);
 			System.out.println("Exercise added");
 		}
 		
@@ -73,7 +70,7 @@ public class Treningscontroller {
 			String navn = input.get(0);
 			String beskrivelse = input.get(1);
 			
-			AdminController.insertMachine(myConn, navn, beskrivelse);
+			AdminController.settInnApparat(myConn, navn, beskrivelse);
 			System.out.println("Apprat lagt til");
 		}
 		
@@ -84,7 +81,7 @@ public class Treningscontroller {
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
 			
-			AdminController.insertExerciseGroup(myConn, navn);
+			AdminController.settInnOvelsesgruppe(myConn, navn);
 			System.out.println("Exercise group added");
 		}
 		
@@ -96,7 +93,7 @@ public class Treningscontroller {
 			String groupName = input.get(0);
 			String exerciseName = input.get(1);
 			
-			AdminController.insertGroupContainsExercise(myConn, groupName, exerciseName);
+			AdminController.settInnGruppeMedOvelse(myConn, groupName, exerciseName);
 			System.out.println("Exercise added to exercise group.");
 		}
 		
@@ -114,7 +111,7 @@ public class Treningscontroller {
 			int antallKilo = Integer.parseInt(input.get(2));
 			int antallSet = Integer.parseInt(input.get(3));
 			
-			AdminController.insertWorkoutContainsExercise(myConn, workoutDate, exerciseName, antallKilo, antallSet);
+			AdminController.settinnTreningsoktMedOvelse(myConn, workoutDate, exerciseName, antallKilo, antallSet);
 			System.out.println("Exercise was added to this workout");
 		}
 		
@@ -126,7 +123,7 @@ public class Treningscontroller {
 			String exerciseName = input.get(0);
 			String machineName = input.get(1);
 			
-			AdminController.insertExerciseOnMachine(myConn, exerciseName, machineName);
+			AdminController.settInnOvelsePaaApparat(myConn, exerciseName, machineName);
 			System.out.println("Exercise was added to the machine");
 		}
 
@@ -145,4 +142,3 @@ public class Treningscontroller {
 		        launch(args);
 		}
 	}
-}
