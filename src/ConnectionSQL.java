@@ -19,4 +19,4 @@ public class ConnectionSQL {
 			return conn;
 		} catch (Exception e) {	
 		} throw new RuntimeException("Unable to connect", e);	
-	}	
+} 
