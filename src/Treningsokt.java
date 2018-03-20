@@ -1,6 +1,4 @@
 
-public class Treningsokt {
-
 	import java.sql.Date;
 	import java.sql.Time;
 	import java.util.ArrayList;
@@ -30,7 +28,7 @@ public class Treningsokt {
 		}
 		
 		
-		public void addExercise(Ovelse ex) {
+		public void addOvelse(Ovelse ex) {
 			this.ovelsesListe.add(ex);
 		}
 		
@@ -38,4 +36,3 @@ public class Treningsokt {
 			return dato;
 		}
 	}
-}

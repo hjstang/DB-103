@@ -1,6 +1,4 @@
 
-public class AdminController {
-
 	import java.sql.Connection;
 	import java.sql.Date;
 	import java.sql.PreparedStatement;
@@ -12,128 +10,124 @@ public class AdminController {
 	import java.util.HashMap;
 	import java.util.List;
 	import java.util.Map;
+	
+	
+public class AdminController {
 
-	public class AdminController{
 		
 		//1. Kravspesifikasjon
 		
 		public static void settInnTreningsokt(Connection myConn, Date date, Time time, int duration, int personligForm, int prestasjon, String notat )throws SQLException{
-			String preQueryStatement = "INSERT INTO Treningsokter (Dato, Tidspunkt, Varighet, PersonligForm, Prestasjon, Notat) VALUES (?,?,?,?,?,?)";
-			PreparedStatement prepStat = myConn.prepareStatement(preQueryStatement);
+			String preQueryStatement = "INSERT INTO Treningsøkt (Dato, Tidspunkt, Varighet, PersonligForm, Prestasjon, Notat) VALUES (?,?,?,?,?,?)";
+			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			
-			prepStat.setDate(1,dato);
-			prepStat.setTime(2, tidspunkt);
-			prepStat.setInt(3, varighet);
-			prepStat.setInt(4, personligForm);
-			prepStat.setInt(5, prestasjon);
-			prepStat.setString(6, notat);
-			prepStat.execute();
+			preparedStatement.setDate(1, date);
+			preparedStatement.setTime(2, time);
+			preparedStatement.setInt(3, duration);
+			preparedStatement.setInt(4, personligForm);
+			preparedStatement.setInt(5, prestasjon);
+			preparedStatement.setString(6, notat);
+			preparedStatement.execute();
 			
 		}
 		
 		public static void settInnOvelsesgruppe(Connection myConn, String navn) throws SQLException {
-			String preQueryStatement = "INSERT INTO Ovelsesgruppe (Navn) VALUES (?)";
-			PreparedStatement prepStat = myConn.prepareStatement(preQueryStatement);
-			prepStat.setString(1, navn);
-			prepStat.execute();
+			String preQueryStatement = "INSERT INTO Øvelsesgruppe (Navn) VALUES (?)";
+			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
+			preparedStatement.setString(1, navn);
+			preparedStatement.execute();
 		}
 		
-		
 		public static void settinnOvelse(Connection myConn, String navn, String beskrivelse) throws SQLException {
-			String preQueryStatement = "INSERT INTO Ovelse (Navn, Beskrivelse) VALUES (?,?)";
-			PreparedStatement prepStat = myConn.prepareStatement(preQueryStatement);
-			prepStat.setString(1, navn);
-			prepStat.setString(2, beskrivelse);
-			prepStat.execute();
+			String preQueryStatement = "INSERT INTO Øvelse (Navn, Beskrivelse) VALUES (?,?)";
+			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
+			preparedStatement.setString(1, navn);
+			preparedStatement.setString(2, beskrivelse);
+			preparedStatement.execute();
 		}
 		
 		public static void settInnApparat(Connection myConn, String navn, String beskrivelse) throws SQLException{
 			String preQueryStatement = "INSERT INTO Apparat (Navn, Beskrivelse) VALUES (?,?)";
-			PreparedStatement prepStat = myConn.prepareStatement(preQueryStatement);
-			prepStat.setString(1, navn);
-			prepStat.setString(2, beskrivelse);
-			prepStat.execute();
+			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
+			preparedStatement.setString(1, navn);
+			preparedStatement.setString(2, beskrivelse);
+			preparedStatement.execute();
 		}
 		
-		public static void settInnOvelsePaaApparat(Connection myConn,String navn,String ApparatNavn) throws SQLException{
+		public static void settInnOvelsePaaApparat(Connection myConn,String ovelseNavn, String ApparatNavn) throws SQLException{
 			//Begge er fremmednøkkler til sin entitet
 			String preQueryStatement = "INSERT INTO exerciseonmachine (ovelseNavn, apparatNavn) VALUES (?,?)";
-			PreparedStatement prepStat = myConn.prepareStatement(preQueryStatement);
-			prepStat.setString(1, ovelseNavn);
-			prepStat.setString(2, apparatNavn);
-			prepStat.execute();
+			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
+			preparedStatement.setString(1, ovelseNavn);
+			preparedStatement.setString(2, ApparatNavn);
+			preparedStatement.execute();
 		}
 		
-		public static void insertGroupContainsExercise(Connection myConn,String groupName,String ovelseNavn) throws SQLException{
+		public static void settInnGruppeMedOvelse(Connection myConn,String gruppeNavn,String ovelseNavn) throws SQLException{
 			//Begge er fremmednøkkler til sin entitet
 			String preQueryStatement = "INSERT INTO groupcontainsexersice (Ovelsesgruppe.Navn, Ovelse.Navn) VALUES (?,?)";
-			PreparedStatement prepStat = myConn.prepareStatement(preQueryStatement);
-			prepStat.setString(1, gruppeNavn);
-			prepStat.setString(2, ovelseNavn);
-			prepStat.execute();
+			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
+			preparedStatement.setString(1, gruppeNavn);
+			preparedStatement.setString(2, ovelseNavn);
+			preparedStatement.execute();
 		}
 		
-		public static void insertWorkoutContainsExercise(Connection myConn,Date treingsDato,String ovelsesName,int antallKilo, int antallSet) throws SQLException{
+		public static void settinnTreningsoktMedOvelse(Connection myConn,Date treningsoktDato,String ovelsesNavn,int antallKilo, int antallSet) throws SQLException{
 			//Begge er fremmednøkkler til sin entitet
 			String preQueryStatement = "INSERT INTO workoutcontainsexercise (Dato, Navn, AntallKilo, AntallSett) VALUES (?,?,?,?)";
-			PreparedStatement prepStat = myConn.prepareStatement(preQueryStatement);
-			prepStat.setDate(1, TreningsoktDato);
-			prepStat.setString(2, OvelsesNavn);
-			prepStat.setInt(3, antallKilo); 
-			prepStat.setInt(4, antallSet);
-			prepStat.execute();
+			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
+			preparedStatement.setDate(1, treningsoktDato);
+			preparedStatement.setString(2, ovelsesNavn);
+			preparedStatement.setInt(3, antallKilo); 
+			preparedStatement.setInt(4, antallSet);
+			preparedStatement.execute();
 		}
 		
 		
 	//2. Kravspesifikasjon
 		
-		public static List<Treningsokter> getNWorkouts(Connection conn, int n) throws SQLException{
-			List<Treningsokter> okter = new ArrayList<Treningsokter>();
+		public static List<Treningsokt> getNTreningsokter(Connection conn, int n) throws SQLException{
+			List<Treningsokt> okter = new ArrayList<Treningsokt>();
 			
 			
-			String stmt = "select * from Treningsokter order by dato desc limit ?";
-			PreparedStatement prepStat = conn.prepareStatement(stmt);
-			prepStat.setInt(1, n);
-			ResultSet rs = prepStat.executeQuery();
+			String stmt = "select * from Treningsokt order by dato desc limit ?";
+			PreparedStatement preparedStatement = conn.prepareStatement(stmt);
+			preparedStatement.setInt(1, n);
+			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
-				Treningsokt okt = new Treningsokter(rs.getDate("dato"), rs.getTime("tidspunt"), rs.getInt("varighet"), rs.getInt("personligForm"), rs.getInt("prestasjon"), rs.getString("notat"));
+				Treningsokt okt = new Treningsokt(rs.getDate("dato"), rs.getTime("tidspunkt"), rs.getInt("varighet"), rs.getInt("personligForm"), rs.getInt("prestasjon"), rs.getString("notat"));
 				okter.add(okt);
 			}
 			
-			for (Treningsokter okt : okter) {
+			for (Treningsokt okt : okter) {
 				Date id = okt.getDato();
 				stmt = "select * from workoutcontainsexercise where dato = ?";
-				prepStat = conn.prepareStatement(stmt);
-				prepStat.setDate(1, id);
+				preparedStatement = conn.prepareStatement(stmt);
+				preparedStatement.setDate(1, id);
 				while(rs.next()) {
-					Ovelse ovelse = new Ovelse(rs.getString("exersicename"),rs.getInt("kilo"),rs.getInt("sett"));
+					Ovelse ovelse = new Ovelse(rs.getString("OvelseNavn"),rs.getInt("kilo"),rs.getInt("sett"));
 					
-					//Hen Ovelse beskrivelse
+					
 					String tmpStmt = "Select * from Ovelse where navn = ?";
 					PreparedStatement pr = conn.prepareStatement(tmpStmt);
 					pr.setString(1, rs.getString("ovelsesNavn"));
 					ResultSet tmpRes = pr.executeQuery();
-					ovelse.setDescription(tmpRes.getString("beskrivelse"));
+					ovelse.setBeskrivelse(tmpRes.getString("beskrivelse"));
 					
-					//Hvis øvelsen gjøres på en maskin, hent apparatinfo
-					//hmm
-					
-					//Legg til øvelse i Treningsokter
-					okt.addExercise(ovelse);
+					okt.addOvelse(ovelse);
 				}
-				
 			}
 			return okter;
 		}
+		
 			
+		//3. Kravspesifikasjon
 		
-		///////////////////////////Kravspesifikasjon 3///////////////////////////
-		
-		public static String getExerciseResult(Connection myConn, Date dateStart,Date dateEnd) throws SQLException{
+		public static String getOvelsesResultat(Connection myConn, Date dateStart,Date dateEnd) throws SQLException{
 			//TODO - BETWEEN FUNKER IKKE HER MED DATOENE...
 			String min = "'" + dateStart.getYear() + "-" + (dateStart.getMonth()+1) + "-" + dateStart.getDate() + "'";
 			String max = "'" + dateEnd.getYear() + "-" + (dateEnd.getMonth()+1) + "-" + dateEnd.getDate() + "'";
-	        String query = "SELECT PERSONLIGFORM, VARIGHET FROM Treningsokter WHERE DATO BETWEEN ? AND ?";
+	        String query = "SELECT PERSONLIGFORM, VARIGHET FROM Treningsokt WHERE DATO BETWEEN ? AND ?";
 	        PreparedStatement preparedStatement = myConn.prepareStatement(query);
 	        preparedStatement.setString(1, min);
 	        preparedStatement.setString(2, max);
@@ -157,16 +151,15 @@ public class AdminController {
 	    }
 		
 		
-		///////////////////////////Kravspesifikasjon 4///////////////////////////
+		//4. Kravspesifikasjon
 		
-		
-		public static List<Ovelsesgruppe> getExerciseGroups(Connection conn) throws SQLException{
+		public static List<Ovelsesgruppe> getOvelsesgruppe(Connection conn) throws SQLException{
 			List<Ovelsesgruppe> ovelsesGrupper = new ArrayList<Ovelsesgruppe>();
-			
+						
 			//Spørr om alle koblingene mellom en Ovelse og en gruppe
 			String stmt = "Select * from groupcontainsexersice";
-			PreparedStatement prepStat = conn.prepareStatement(stmt);
-			ResultSet rs = prepStat.executeQuery();
+			PreparedStatement preparedStatement = conn.prepareStatement(stmt);
+			ResultSet rs = preparedStatement.executeQuery();
 			
 			//Lag en map hvor  er key og ArrayList med exercisenavn er value
 			Map<String,ArrayList<String>> map = new HashMap<String,ArrayList<String>>();
@@ -180,9 +173,9 @@ public class AdminController {
 			}
 			
 			//Lag objekter ut av mappen
-			for(String  : map.keySet()) {
+			for(String gruppenavn: map.keySet()) {
 				List<Ovelse> ovelser = new ArrayList<Ovelse>();
-				for(String ovelseNavn : map.get()) {
+				for(String ovelseNavn : map.get(gruppenavn)) {
 					//Hen Ovelse beskrivelse
 					String tmpStmt = "Select * from Ovelse where navn = ?";
 					PreparedStatement pr = conn.prepareStatement(tmpStmt);
@@ -194,25 +187,19 @@ public class AdminController {
 					}
 					
 				}
-				ovelsesGrupper.add(new Ovelsesgruppe(gruppeNavn,ovelser));
+				ovelsesGrupper.add(new Ovelsesgruppe(gruppenavn,ovelser));
 			}
 			return ovelsesGrupper;
 		}
 		
 		
-		///////////////////////////Kravspesifikasjon 5///////////////////////////
+		//Kravspesifikasjon 5
 		
-		
-		//Skal hente ut hvor mange treningsøkter en har hatt totalt
-		public static int getTotalWorkouts(Connection conn) throws SQLException {
-			String stmt  = "select count(dato) as total from Treningsokter";
+		public static int getTotaltAntallOkter(Connection conn) throws SQLException {
+			String stmt  = "select count(dato) as total from Treningsokt";
 			PreparedStatement pr = conn.prepareStatement(stmt);
 			ResultSet rs = pr.executeQuery();
-			return rs.next() ? rs.getInt("total") : 0;
+			return rs.next() ? rs.getInt("Totalt antall økter") : 0;
 		}
 	}
-	
-	
-	
-}
 

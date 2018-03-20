@@ -8,7 +8,7 @@ public class Ovelsesgruppe {
 	private String navn;
 	private List<Ovelse> ovelser;
 	
-	public Ovelsesgruppe(String navn,Collection<Ovelse> ovelser) {
+	public Ovelsesgruppe(String navn, Collection<Ovelse> ovelser) {
 		this.navn = navn;
 		this.ovelser = new ArrayList<Ovelse>(ovelser);
 	}
