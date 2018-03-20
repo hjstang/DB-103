@@ -25,18 +25,18 @@ public class Treningscontroller {
 		registerExerciseInGroupButton, registerExerciseInWorkoutButton, registerExerciseOnMachineButton;
 		
 		@FXML
-		TextField registerWorkoutField, registerExerciseField, registerMachineField, registerExerciseGroupField,
-		registerExerciseInGroupField,registerExerciseInWorkoutField, registerExerciseOnMachineField;
+		TextField registerTreningsoktField, registerOvelseField, registerApparatField, registerOvelsesgruppeField,
+		registerOvelseIGruppeField,registrerOvelseITreningsokt, registerOvelsePaaApparatField;
 		
-		public TrainingController() {
+		public TreningsController() {
 			
 		}
 		
 		
 		//register workout to databse
 		@FXML
-		public void registerWorkout() throws SQLException {
-			List<String> input = Arrays.asList(registerWorkoutField.getText().split(","));
+		public void registrerTreningsokt() throws SQLException {
+			List<String> input = Arrays.asList(registerTreningsoktField.getText().split(","));
 			Connection myConn = new Main().connect();
 			List<String> dateString = Arrays.asList(input.get(0).split("-"));
 			int year = Integer.parseInt(dateString.get(0));
@@ -56,8 +56,8 @@ public class Treningscontroller {
 		
 		
 		@FXML
-		public void registerExercise() throws SQLException {
-			List<String> input = Arrays.asList(registerExerciseField.getText().split(","));
+		public void registerOvelse() throws SQLException {
+			List<String> input = Arrays.asList(registerOvelseField.getText().split(","));
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
 			String beskrivelse = input.get(1);
@@ -67,20 +67,20 @@ public class Treningscontroller {
 		}
 		
 		@FXML
-		public void registerMachine() throws SQLException {
-			List<String> input = Arrays.asList(registerMachineField.getText().split(","));
+		public void registerApparat() throws SQLException {
+			List<String> input = Arrays.asList(registerApparatField.getText().split(","));
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
 			String beskrivelse = input.get(1);
 			
 			AdminController.insertMachine(myConn, navn, beskrivelse);
-			System.out.println("Machine added");
+			System.out.println("Apprat lagt til");
 		}
 		
 		
 		@FXML
 		public void registerExerciseGroup() throws SQLException {
-			List<String> input = Arrays.asList(registerExerciseGroupField.getText().split(","));
+			List<String> input = Arrays.asList(registerOvelsesgruppeField.getText().split(","));
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
 			
@@ -91,7 +91,7 @@ public class Treningscontroller {
 		
 		@FXML
 		public void registerExerciseInGroup() throws SQLException {
-			List<String> input = Arrays.asList(registerExerciseInGroupField.getText().split(","));
+			List<String> input = Arrays.asList(registerOvelseIGruppeField.getText().split(","));
 			Connection myConn = new Main().connect();
 			String groupName = input.get(0);
 			String exerciseName = input.get(1);
@@ -103,7 +103,7 @@ public class Treningscontroller {
 		
 		@FXML
 		public void registerExerciseInWorkout() throws SQLException {
-			List<String> input = Arrays.asList(registerExerciseInWorkoutField.getText().split(","));
+			List<String> input = Arrays.asList(registrerOvelseITreningsokt.getText().split(","));
 			Connection myConn = new Main().connect();
 			List<String> dateString = Arrays.asList(input.get(0).split("-"));
 			int year = Integer.parseInt(dateString.get(0));
@@ -121,7 +121,7 @@ public class Treningscontroller {
 		
 		@FXML
 		public void registerExerciseOnMachine() throws SQLException {
-			List<String> input = Arrays.asList(registerExerciseOnMachineField.getText().split(","));
+			List<String> input = Arrays.asList(registerOvelsePaaApparatField.getText().split(","));
 			Connection myConn = new Main().connect();
 			String exerciseName = input.get(0);
 			String machineName = input.get(1);
@@ -144,9 +144,5 @@ public class Treningscontroller {
 		public static void main(String[] args) {
 		        launch(args);
 		}
-		
-		
 	}
-	
-	
 }
