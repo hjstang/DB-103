@@ -6,7 +6,7 @@ public class Treningsokt {
 	import java.util.ArrayList;
 	import java.util.List;
 
-	public class Workout {
+	public class Treningsokt {
 		
 		private Date dato;
 		private Time tidspunkt;
@@ -16,9 +16,9 @@ public class Treningsokt {
 		private String notat;
 		
 		
-		private List<Exercise> exerciseList;
+		private List<Ovelse> ovelsesListe;
 		
-		public Workout(Date dato, Time tidspunkt, int varighet, int personligForm, int prestasjon, String notat){
+		public Treningsokt(Date dato, Time tidspunkt, int varighet, int personligForm, int prestasjon, String notat){
 			this.dato = dato;
 			this.tidspunkt = tidspunkt;
 			this.varighet = varighet;
@@ -26,24 +26,16 @@ public class Treningsokt {
 			this.prestasjon = prestasjon;
 			this.notat = notat;
 			
-			this.exerciseList = new ArrayList<Exercise>();
+			this.ovelsesListe = new ArrayList<Ovelse>();
 		}
 		
 		
-		public void addExercise(Exercise ex) {
-			this.exerciseList.add(ex);
+		public void addExercise(Ovelse ex) {
+			this.ovelsesListe.add(ex);
 		}
 		
 		public Date getDato() {
 			return dato;
 		}
-			
-		
-		
-		
-
 	}
-	
-	
-	
 }
