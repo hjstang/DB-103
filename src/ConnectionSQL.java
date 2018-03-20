@@ -15,7 +15,9 @@ public class ConnectionSQL {
             Properties p = new Properties();
             p.put(“user”,  “noragk”);
             p.put(“password”, “Norag0808”);
-            conn = DriverManager.getConnection(“jdbc:mysql://mysql.stud.ntnu.no/noragk_db_treningsdagbok?user=noragk_db&password=Norag0808")
-        }
-    }
+            conn = DriverManager.getConnection(“https://mysqladmin.it.ntnu.no/db_structure.php?server=1&db=noragk_treningsdagbok&token=57c45fd2fb6ef7d70160a6b49fd7f990“),p
+            return conn;
+        } catch (Exception e) {    
+        } throw new RuntimeException(“Unable to connect”, e);    
+    }    
 }
