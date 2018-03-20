@@ -1,22 +1,29 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="getDatabaseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6984E8;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HovedsideController">
    <children>
-      <TableView fx:id="displayDBDataTable" layoutX="200.0" layoutY="161.0" prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
-      <Button fx:id="getNLastWorkoutsButton" layoutX="66.0" layoutY="46.0" mnemonicParsing="false" onAction="#displayNLastWorkouts" text="Get n last workouts" />
-      <TextField fx:id="getNLastWorkoutsField" layoutX="211.0" layoutY="46.0" promptText="How many workouts?" />
+      <Label layoutX="54.0" layoutY="43.0" prefHeight="49.0" prefWidth="316.0" text="Treningsapp" textFill="#201453">
+         <font>
+            <Font name="Lucida Console" size="46.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="132.0" text="Her kan du registrere&#10;- treningsøkter&#10;- øvelser&#10;- øvelsesgrupper&#10;- apparater" textFill="#e8e2e2">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="registrerButton" layoutX="54.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleRegistrerButton" prefHeight="33.0" prefWidth="105.0" text="Registrer her" />
+      <Label layoutX="310.0" layoutY="132.0" prefHeight="105.0" prefWidth="282.0" text="Her kan du se&#10;- dine siste registrerte &#10;   treningsøktene&#10;- resultatlogg for en øvelse&#10;- øvelser i øvelsesgrupper" textFill="#e8e2e2">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="seInfoButton" layoutX="310.0" layoutY="266.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="105.0" text="Se mer her" />
    </children>
-</Pane>
+</AnchorPane>
