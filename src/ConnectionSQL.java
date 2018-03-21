@@ -7,20 +7,30 @@ public abstract class ConnectionSQL {
 	public ConnectionSQL() {
 	}
 	
-	public Connection connect() {
-		try {
-			System.out.println("Trying to connect");
+	public Connection connect() throws InstantiationException, IllegalAccessException {
+		try{ 
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			
-			// Brukernavn og passord
-			Properties p = new Properties();
-			p.put("user",  "noragk");
-			p.put("password", "Norag0808");
-			conn = DriverManager.getConnection("https://mysqladmin.it.ntnu.no/db_structure.php?server=1&db=noragk_treningsdagbok&token=57c45fd2fb6ef7d70160a6b49fd7f990", p);
-			System.out.println("Connection OK");
-			return conn;
-		} catch (Exception e) {	
-			throw new RuntimeException("Unable to connect", e);
-		}
+		
+		  String url = "jdbc:mysql://mysql.stud.ntnu.no/noragk_treningsdagbok";
+		  String user = "noragk_db";
+		  String pw = "Norag0808";
+		  Connection con = DriverManager.getConnection(url,user,pw);
+		  System.out.println("Tilkoblingen fungerte.");
+		  return conn;
+		  } catch (SQLException ex) {
+		    System.out.println("Tilkobling feilet: "+ex.getMessage());
+		  }catch (ClassNotFoundException ex) {
+		    System.out.println("Feilet under driverlasting: "+ex.getMessage());
+		  } finally {
+		    try {
+		      if (conn !=  null) conn.close();
+		    } catch (SQLException ex) {
+		      System.out.println("Epic fail: "+ex.getMessage());
+		    } 
+		  }
+		return null;
 	}
+	
+	
+	 
 } 

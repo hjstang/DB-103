@@ -34,7 +34,7 @@ public class TreningsController extends Application{
 		
 		//register workout to databse
 		@FXML
-		public void registrerTreningsokt() throws SQLException {
+		public void registrerTreningsokt() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerTreningsoktFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			List<String> dateString = Arrays.asList(input.get(0).split("-"));
@@ -55,7 +55,7 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registrerOvelse() throws SQLException {
+		public void registrerOvelse() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelseFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
@@ -66,7 +66,7 @@ public class TreningsController extends Application{
 		}
 		
 		@FXML
-		public void registrerApparat() throws SQLException {
+		public void registrerApparat() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerApparatFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
@@ -78,7 +78,7 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registrerOvelsesgruppe() throws SQLException {
+		public void registrerOvelsesgruppe() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelsesgruppeFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String navn = input.get(0);
@@ -89,7 +89,7 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registrerOvelseIGruppe() throws SQLException {
+		public void registrerOvelseIGruppe() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelseIGruppeFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String groupName = input.get(0);
@@ -101,7 +101,7 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registrerOvelseITreningsokt() throws SQLException {
+		public void registrerOvelseITreningsokt() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelseITreningsoktFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			List<String> dateString = Arrays.asList(input.get(0).split("-"));
@@ -119,7 +119,7 @@ public class TreningsController extends Application{
 		
 		
 		@FXML
-		public void registrerOvelsePaaApparat() throws SQLException {
+		public void registrerOvelsePaaApparat() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelsePaaApparatFelt.getText().split(","));
 			Connection myConn = new Main().connect();
 			String exerciseName = input.get(0);
