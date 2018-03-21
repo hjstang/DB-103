@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="688.0" style="-fx-background-color: #6984E8;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="688.0" style="-fx-background-color: #6984E8;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TreningsController">
    <children>
       <GridPane layoutX="27.0" layoutY="96.0" prefHeight="369.0" prefWidth="630.0">
         <columnConstraints>
@@ -100,5 +100,6 @@
             <Font name="Lucida Console" size="46.0" />
          </font>
       </Label>
+      <Button fx:id="returnButton" layoutX="599.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleReturnButton" text="Tilbake" />
    </children>
 </Pane>

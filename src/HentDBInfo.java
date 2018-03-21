@@ -6,8 +6,12 @@ import java.sql.Date;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class HentDBInfo {
 
@@ -73,6 +77,28 @@ public class HentDBInfo {
     	   System.out.println(ovelse);
        }
        
+	}
+	
+	@FXML
+	Button returnButton;
+	
+	@FXML
+	public void handleReturnButton() throws SQLException, Exception {
+        Stage stage; 
+        Parent root;
+        //get reference to the button's stage        
+        stage=(Stage) returnButton.getScene().getWindow();
+        
+        //HovedsideController controller= new HovedsideController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Hovedside.fxml"));
+            
+        //loader.setController(controller); //Smeller den kontrolleren inn i fxmlfilen
+
+        root = (Parent) loader.load();
+        //create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 	}
 	
 	
