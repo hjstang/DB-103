@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6984E8;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HentDBInfo">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6984E8;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HentDBInfo">
    <children>
       <GridPane layoutX="59.0" layoutY="101.0" prefHeight="246.0" prefWidth="470.0">
         <columnConstraints>
@@ -42,17 +42,17 @@
             </Label>
             <TextField fx:id="seResultatloggFelt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="seØvelseFelt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Velg" GridPane.columnIndex="2">
+            <Button fx:id="velg1" mnemonicParsing="false" onAction="#handleVelg1Button" text="Velg" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Velg" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="velg2" mnemonicParsing="false" onAction="#handleVelg2Button" text="Velg" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Velg" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button fx:id="velg3" mnemonicParsing="false" onAction="#handleVelg3Button" text="Velg" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>
