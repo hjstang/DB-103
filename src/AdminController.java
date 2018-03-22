@@ -65,7 +65,7 @@ public class AdminController {
 		
 		public static void settInnGruppeMedOvelse(Connection myConn,String gruppeNavn,String ovelseNavn) throws SQLException{
 			//Begge er fremmednøkkler til sin entitet
-			String preQueryStatement = "INSERT INTO Øvelsesgruppe (Øvelsesgruppe.Navn, FriØvelse.Navn) VALUES (?,?)";
+			String preQueryStatement = "INSERT INTO Øvelsesgruppe (Øvelsesgruppe.Navn, FriØvelse.ØvelseNavn) VALUES (?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setString(1, gruppeNavn);
 			preparedStatement.setString(2, ovelseNavn);
