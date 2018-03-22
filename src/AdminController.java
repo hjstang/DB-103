@@ -196,11 +196,24 @@ public class AdminController {
 		
 		//Kravspesifikasjon 5
 		
-		public static int getTotaltAntallOkter(Connection conn) throws SQLException {
-			String stmt  = "select count(dato) as total from Treningsokt";
-			PreparedStatement pr = conn.prepareStatement(stmt);
-			ResultSet rs = pr.executeQuery();
-			return rs.next() ? rs.getInt("Totalt antall økter") : 0;
+		//kunne regne ut antall prosent av øktene der prestasjon > 5 
+		//Gjøres ved å ta AVG av antall treningsøkter totalt(SUM()) og antall treningsøkter 
+		//der prestasjon > 5 (projisere på prestasjon > 5) 
+
+		public static int getPrecentBiggerThan5(Connection conn) throws SQLException{
+			String stmt1 = "select count(*) from Treningsøkt where Prestasjon>5";
+			String stmt2 = "Select count(*) from Treningsøkt";
+			PreparedStatement pr1 = conn.prepareStatement(stmt1);
+			PreparedStatement pr2 = conn.prepareStatement(stmt2);
+			ResultSet rs1 = pr1.executeQuery();
+			rs1.next();
+			int rows1 = rs1.getInt(1);
+			ResultSet rs2 = pr2.executeQuery();
+			rs2.next();
+			int rows2 = rs2.getInt(1);
+			return (rows1/rows2)*100;
+			
 		}
+
 	}
 
