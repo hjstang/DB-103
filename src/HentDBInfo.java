@@ -29,6 +29,7 @@ public class HentDBInfo {
 	@FXML 
 	public void handleVelg1Button() throws SQLException, Exception {
        int antall = Integer.parseInt(seOktFelt.getText());
+       System.out.println(antall);
        Connection myConn = new Main().connect();
        List<Treningsokt> resultater = AdminController.getNTreningsokter(myConn, antall);
        System.out.println("De " + antall + "siste treningsøktene: ");

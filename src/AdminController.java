@@ -39,7 +39,7 @@ public class AdminController {
 		}
 		
 		public static void settinnOvelse(Connection myConn, String navn, String beskrivelse) throws SQLException {
-			String preQueryStatement = "INSERT INTO Øvelse (Navn, Beskrivelse) VALUES (?,?)";
+			String preQueryStatement = "INSERT INTO FriØvelse (Navn, Beskrivelse) VALUES (?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setString(1, navn);
 			preparedStatement.setString(2, beskrivelse);
@@ -47,7 +47,7 @@ public class AdminController {
 		}
 		
 		public static void settInnApparat(Connection myConn, String navn, String beskrivelse) throws SQLException{
-			String preQueryStatement = "INSERT INTO Apparat (Navn, Beskrivelse) VALUES (?,?)";
+			String preQueryStatement = "INSERT INTO Apparat (ApparatNavn, Beskrivelse) VALUES (?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setString(1, navn);
 			preparedStatement.setString(2, beskrivelse);
@@ -65,7 +65,7 @@ public class AdminController {
 		
 		public static void settInnGruppeMedOvelse(Connection myConn,String gruppeNavn,String ovelseNavn) throws SQLException{
 			//Begge er fremmednøkkler til sin entitet
-			String preQueryStatement = "INSERT INTO groupcontainsexersice (Ovelsesgruppe.Navn, Ovelse.Navn) VALUES (?,?)";
+			String preQueryStatement = "INSERT INTO Øvelsesgruppe (Øvelsesgruppe.Navn, FriØvelse.Navn) VALUES (?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setString(1, gruppeNavn);
 			preparedStatement.setString(2, ovelseNavn);
@@ -90,12 +90,13 @@ public class AdminController {
 			List<Treningsokt> okter = new ArrayList<Treningsokt>();
 			
 			
-			String stmt = "select * from Treningsokt order by dato desc limit ?";
+			String stmt = "select * from Treningsøkt order by dato desc limit ?";
 			PreparedStatement preparedStatement = conn.prepareStatement(stmt);
+			System.out.println(preparedStatement);
 			preparedStatement.setInt(1, n);
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
-				Treningsokt okt = new Treningsokt(rs.getDate("dato"), rs.getTime("tidspunkt"), rs.getInt("varighet"), rs.getInt("personligForm"), rs.getInt("prestasjon"), rs.getString("notat"));
+				Treningsokt okt = new Treningsokt(rs.getDate("dato"), rs.getTime("tidspunkt"), rs.getInt("varighet"), rs.getInt("personligForm"), rs.getInt("prestasjon"), rs.getString("InfoOmØvelse"));
 				okter.add(okt);
 			}
 			
@@ -157,11 +158,11 @@ public class AdminController {
 			List<Ovelsesgruppe> ovelsesGrupper = new ArrayList<Ovelsesgruppe>();
 						
 			//Spørr om alle koblingene mellom en Ovelse og en gruppe
-			String stmt = "Select * from groupcontainsexersice";
+			String stmt = "Select * from Øvelsesgruppe";
 			PreparedStatement preparedStatement = conn.prepareStatement(stmt);
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			//Lag en map hvor  er key og ArrayList med exercisenavn er value
+			//Lag en map hvor  øvelsesgruppe er key og ArrayList med exercisenavn er value
 			Map<String,ArrayList<String>> map = new HashMap<String,ArrayList<String>>();
 			while(rs.next()) {
 				if(map.containsKey(rs.getString(""))) {
