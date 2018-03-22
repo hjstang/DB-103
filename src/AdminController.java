@@ -56,7 +56,7 @@ public class AdminController {
 		
 		public static void settInnOvelsePaaApparat(Connection myConn,String ovelseNavn, String ApparatNavn) throws SQLException{
 			//Begge er fremmednøkkler til sin entitet
-			String preQueryStatement = "INSERT INTO ApparatØvelse (ovelseNavn, apparatNavn) VALUES (?,?)";
+			String preQueryStatement = "INSERT INTO ApparatØvelse (Navn, ApparatNavn) VALUES (?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setString(1, ovelseNavn);
 			preparedStatement.setString(2, ApparatNavn);
