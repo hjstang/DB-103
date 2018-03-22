@@ -65,7 +65,7 @@ public class AdminController {
 		
 		public static void settInnGruppeMedOvelse(Connection myConn,String gruppeNavn,String ovelseNavn) throws SQLException{
 			//Begge er fremmednøkkler til sin entitet
-			String preQueryStatement = "INSERT INTO Øvelsesgruppe (Øvelsesgruppe.Navn, FriØvelse.ØvelseNavn) VALUES (?,?)";
+			String preQueryStatement = "INSERT INTO gruppeMedØvelse (Gruppenavn, ØvelsesNavn) VALUES (?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setString(1, gruppeNavn);
 			preparedStatement.setString(2, ovelseNavn);
@@ -74,7 +74,7 @@ public class AdminController {
 		
 		public static void settinnTreningsoktMedOvelse(Connection myConn,Date treningsoktDato,String ovelsesNavn,int antallKilo, int antallSet) throws SQLException{
 			//Begge er fremmednøkkler til sin entitet
-			String preQueryStatement = "INSERT INTO workoutcontainsexercise (Dato, Navn, AntallKilo, AntallSett) VALUES (?,?,?,?)";
+			String preQueryStatement = "INSERT INTO ØvelseITreningsøkt (Dato, Navn, kilo, sett) VALUES (?,?,?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setDate(1, treningsoktDato);
 			preparedStatement.setString(2, ovelsesNavn);
