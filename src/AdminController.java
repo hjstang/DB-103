@@ -147,7 +147,7 @@ public class AdminController {
 	        double personligFormSnitt = antallPersonligeForm/index;
 	        double varighetSnitt = antallTimer/index;
 	        
-	        String report = "I løpet av perioden på "+ index + "dager, trente du "+ antallTimer + "."+ " Gjennomsnittsøkten var på " +varighetSnitt +" timer, med et gjennomsnittlig personlig form på "+personligFormSnitt +".";
+	        String report = "I løpet av perioden på "+ index + "dager, trente du "+ antallTimer + " minutter."+ " Gjennomsnittsøkten var på " +varighetSnitt +" minutter, med et gjennomsnittlig personlig form på "+personligFormSnitt +".";
 
 	        return report;
 	    }
@@ -210,6 +210,7 @@ public class AdminController {
 			ResultSet rs2 = pr2.executeQuery();
 			rs2.next();
 			int rows2 = rs2.getInt(1);
+			System.out.println("Prosentandel av treningsøktene dine der prestasjon er større enn 5: ");
 			return (rows1/rows2)*100;
 			
 		}
