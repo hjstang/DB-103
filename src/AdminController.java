@@ -15,14 +15,14 @@
 public class AdminController {
 
 		
-		//1. Kravspesifikasjon
+		//1. ues case
 		
-		public static void settInnTreningsokt(Connection myConn, Date date, Time time, int duration, int personligForm, int prestasjon, String notat )throws SQLException{
+		public static void settInnTreningsokt(Connection myConn, Date date, String time, int duration, int personligForm, int prestasjon, String notat )throws SQLException{
 			String preQueryStatement = "INSERT INTO Treningsøkt (Dato, Tidspunkt, Varighet, PersonligForm, Prestasjon, Notat) VALUES (?,?,?,?,?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			
 			preparedStatement.setDate(1, date);
-			preparedStatement.setTime(2, time);
+			preparedStatement.setString(2, time);
 			preparedStatement.setInt(3, duration);
 			preparedStatement.setInt(4, personligForm);
 			preparedStatement.setInt(5, prestasjon);
@@ -55,7 +55,7 @@ public class AdminController {
 		}
 		
 		public static void settInnOvelsePaaApparat(Connection myConn,String ovelseNavn, String ApparatNavn) throws SQLException{
-			//Begge er fremmednøkkler til sin entitet
+			//fk
 			String preQueryStatement = "INSERT INTO ApparatØvelse (Navn, ApparatNavn) VALUES (?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setString(1, ovelseNavn);
@@ -64,7 +64,7 @@ public class AdminController {
 		}
 		
 		public static void settInnGruppeMedOvelse(Connection myConn,String gruppeNavn,String ovelseNavn) throws SQLException{
-			//Begge er fremmednøkkler til sin entitet
+			//fremmednøkkler 
 			String preQueryStatement = "INSERT INTO gruppeMedØvelse (Gruppenavn, ØvelsesNavn) VALUES (?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setString(1, gruppeNavn);
@@ -73,7 +73,7 @@ public class AdminController {
 		}
 		
 		public static void settinnTreningsoktMedOvelse(Connection myConn,Date treningsoktDato,String ovelsesNavn,int antallKilo, int antallSet) throws SQLException{
-			//Begge er fremmednøkkler til sin entitet
+			//fremmedkey
 			String preQueryStatement = "INSERT INTO ØvelseITreningsøkt (Dato, Navn, kilo, sett) VALUES (?,?,?,?)";
 			PreparedStatement preparedStatement = myConn.prepareStatement(preQueryStatement);
 			preparedStatement.setDate(1, treningsoktDato);
@@ -84,7 +84,7 @@ public class AdminController {
 		}
 		
 		
-	//2. Kravspesifikasjon
+	//2. use case
 		
 		public static List<Treningsokt> getNTreningsokter(Connection conn, int n) throws SQLException{
 			List<Treningsokt> okter = new ArrayList<Treningsokt>();
@@ -122,7 +122,7 @@ public class AdminController {
 		}
 		
 			
-		//3. Kravspesifikasjon
+		//3. use case
 		
 		public static String getOvelsesResultat(Connection myConn, Date dateStart,Date dateEnd) throws SQLException{
 			//TODO - BETWEEN FUNKER IKKE HER MED DATOENE...
@@ -151,7 +151,7 @@ public class AdminController {
 
 	        return report;
 	    }
-		//4. Kravspesifikasjon
+		//4. use case
 		
 		public static List<Ovelsesgruppe> getOvelsesgruppe(Connection conn) throws SQLException{
 			List<Ovelsesgruppe> ovelsesGrupper = new ArrayList<Ovelsesgruppe>();
@@ -172,11 +172,10 @@ public class AdminController {
 				}
 			}
 			
-			//Lag objekter ut av mappen
+			//Lag objekter 
 			for(String gruppenavn: map.keySet()) {
 				List<Ovelse> ovelser = new ArrayList<Ovelse>();
 				for(String ovelseNavn : map.get(gruppenavn)) {
-					//Henter Ovelse beskrivelse
 					String tmpStmt = "Select * from FriØvelse where navn = ?";
 					PreparedStatement pr = conn.prepareStatement(tmpStmt);
 					pr.setString(1, ovelseNavn);
@@ -193,7 +192,7 @@ public class AdminController {
 		}
 		
 		
-		//Kravspesifikasjon 5
+		// 5 use case
 		
 		//kunne regne ut antall prosent av øktene der prestasjon > 5 
 		//Gjøres ved å ta AVG av antall treningsøkter totalt(SUM()) og antall treningsøkter 

@@ -48,7 +48,7 @@ public class TreningsController extends Application{
 			int prestasjon = Integer.parseInt(input.get(4));
 			String notat = input.get(5);
 			System.out.println(input);
-			//AdminController.insertWorkout(myConn, date, time, duration, personligForm, prestasjon, notat);
+			AdminController.settInnTreningsokt(myConn, date, time, duration, personligForm, prestasjon, notat);
 			System.out.println("Treningsøkt lagt til");
 		
 		}

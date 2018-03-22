@@ -71,7 +71,6 @@ public class HentDBInfo {
 	@FXML 
 	public void handleVelg3Button() throws SQLException, Exception {
 		String resultat = "Øvelsesgruppe \t Øvelse\n";
-		//String ovelsesGruppe = seØvelseFelt.getText();
        Connection myConn = ConnectionSQL.connect();
        List<Ovelsesgruppe> grupper = AdminController.getOvelsesgruppe(myConn);
        for (Ovelsesgruppe ovelsesgruppe : grupper) {
