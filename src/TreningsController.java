@@ -73,7 +73,7 @@ public class TreningsController extends Application{
 			String beskrivelse = input.get(1);
 			
 			AdminController.settInnApparat(myConn, navn, beskrivelse);
-			System.out.println("Apprat lagt til");
+			System.out.println("Apparat lagt til");
 		}
 		
 		
@@ -84,7 +84,7 @@ public class TreningsController extends Application{
 			String navn = input.get(0);
 			
 			AdminController.settInnOvelsesgruppe(myConn, navn);
-			System.out.println("Exercise group added");
+			System.out.println("Øvelsesgruppe er lagt til");
 		}
 		
 		
