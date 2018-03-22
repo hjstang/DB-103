@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javafx.fxml.FXML;
@@ -20,6 +21,9 @@ public class HovedsideController {
 	@FXML
 	Button seInfoButton;
 	
+	@FXML
+	Button krav5;
+	
 	@FXML 
 	public void handleRegistrerButton() throws SQLException, Exception {
         Stage stage; 
@@ -30,6 +34,12 @@ public class HovedsideController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+	}
+	
+	@FXML 
+	public void handleKrav5Button() throws SQLException, Exception {
+		Connection myConn = new Main().connect();
+		System.out.println(AdminController.getPrecentBiggerThan5(myConn));
 	}
 	
 	@FXML 

@@ -63,10 +63,10 @@ public class HentDBInfo {
 	public void handleVelg3Button() throws SQLException, Exception {
 		String ovelsesGruppe = seØvelseFelt.getText();
        Connection myConn = new Main().connect();
-       List<Ovelse> ovelserIGruppe = new ArrayList();
+       List<Ovelse> ovelserIGruppe = null;
        List<Ovelsesgruppe> grupper = AdminController.getOvelsesgruppe(myConn);
        for (Ovelsesgruppe ovelsesgruppe : grupper) {
-    	   		if (ovelsesgruppe.equals(ovelsesGruppe)) {
+    	   		if (ovelsesgruppe.getNavn().equals(ovelsesGruppe)) {
     	   			ovelserIGruppe = ovelsesgruppe.getOvelser();
     	   			
     	   		}

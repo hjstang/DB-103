@@ -16,6 +16,9 @@ public class Ovelsesgruppe {
 	public List<Ovelse> getOvelser() {
 		return ovelser;
 	}
+	public String getNavn() {
+		return this.navn;
+	}
 	
 }
 
