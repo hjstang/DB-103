@@ -26,8 +26,6 @@ public class HentDBInfo {
 	TextField seOktFelt, seResultatloggFelt, seØvelseFelt;
 	
 	
-	
-	
 	@FXML 
 	public void handleVelg1Button() throws SQLException, Exception {
        int antall = Integer.parseInt(seOktFelt.getText());
@@ -88,12 +86,7 @@ public class HentDBInfo {
         Parent root;
         //get reference to the button's stage        
         stage=(Stage) returnButton.getScene().getWindow();
-        
-        //HovedsideController controller= new HovedsideController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Hovedside.fxml"));
-            
-        //loader.setController(controller); //Smeller den kontrolleren inn i fxmlfilen
-
         root = (Parent) loader.load();
         //create a new scene with root and set the stage
         Scene scene = new Scene(root);

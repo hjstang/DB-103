@@ -25,9 +25,7 @@ public class HovedsideController {
         Stage stage; 
         Parent root;    
         stage=(Stage) registrerButton.getScene().getWindow();
-        //TreningsController controller= new TreningsController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Trening.fxml"));       
-        //loader.setController(controller);
         root = (Parent) loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -39,9 +37,7 @@ public class HovedsideController {
         Stage stage; 
         Parent root;    
         stage=(Stage) seInfoButton.getScene().getWindow();
-        //HentDBInfo controller= new HentDBInfo();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HentDBInfo.fxml"));       
-        //loader.setController(controller);
         root = (Parent) loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
