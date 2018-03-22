@@ -92,7 +92,7 @@ public class AdminController {
 			
 			String stmt = "select * from Treningsøkt order by dato desc limit ?";
 			PreparedStatement preparedStatement = conn.prepareStatement(stmt);
-			System.out.println(preparedStatement);
+			//System.out.println(preparedStatement);
 			preparedStatement.setInt(1, n);
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
@@ -126,32 +126,31 @@ public class AdminController {
 		
 		public static String getOvelsesResultat(Connection myConn, Date dateStart,Date dateEnd) throws SQLException{
 			//TODO - BETWEEN FUNKER IKKE HER MED DATOENE...
-			String min = "'" + dateStart.getYear() + "-" + (dateStart.getMonth()+1) + "-" + dateStart.getDate() + "'";
-			String max = "'" + dateEnd.getYear() + "-" + (dateEnd.getMonth()+1) + "-" + dateEnd.getDate() + "'";
-	        String query = "SELECT PERSONLIGFORM, VARIGHET FROM Treningsokt WHERE DATO BETWEEN ? AND ?";
+			dateStart.setYear(dateStart.getYear()-1900);
+			dateEnd.setYear(dateEnd.getYear()-1900);
+	        String query = "SELECT PERSONLIGFORM, VARIGHET FROM Treningsøkt WHERE DATO BETWEEN ? AND ?";
 	        PreparedStatement preparedStatement = myConn.prepareStatement(query);
-	        preparedStatement.setString(1, min);
-	        preparedStatement.setString(2, max);
+	        preparedStatement.setDate(1, dateStart);
+	        preparedStatement.setDate(2,dateEnd);
+	        System.out.println(preparedStatement);
 	        ResultSet resultSet = preparedStatement.executeQuery();
 	        int index =1;
 	        int antallTimer = 0;
 	        int antallPersonligeForm = 0;
 	        while (resultSet.next()) {
-	            System.out.println("INNNE I LOOPEN");
+	            System.out.println("kom inn i while-løkken");
 	            index++;
 	            antallTimer += resultSet.getInt("VARIGHET");
 	            antallPersonligeForm += resultSet.getInt("PERSONLIGFORM");
 	            
 	        }
-	        int personligFormSnitt = antallPersonligeForm/index;
-	        int varighetSnitt = antallTimer/index;
+	        double personligFormSnitt = antallPersonligeForm/index;
+	        double varighetSnitt = antallTimer/index;
 	        
-	        String report = "I løpet av perioden på "+ index + "dager, trente du "+ antallTimer + "."+ " Gjennomsnittsøkten var på " +varighetSnitt +" timer, med et gjennomsnittlig perosnlig form på "+personligFormSnitt +".";
+	        String report = "I løpet av perioden på "+ index + "dager, trente du "+ antallTimer + "."+ " Gjennomsnittsøkten var på " +varighetSnitt +" timer, med et gjennomsnittlig personlig form på "+personligFormSnitt +".";
 
 	        return report;
 	    }
-		
-		
 		//4. Kravspesifikasjon
 		
 		public static List<Ovelsesgruppe> getOvelsesgruppe(Connection conn) throws SQLException{
@@ -162,14 +161,14 @@ public class AdminController {
 			PreparedStatement preparedStatement = conn.prepareStatement(stmt);
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			//Lag en map hvor  øvelsesgruppe er key og ArrayList med exercisenavn er value
+			//Lager en map hvor  øvelsesgruppe er key og ArrayList med øvelsesnavn er value
 			Map<String,ArrayList<String>> map = new HashMap<String,ArrayList<String>>();
 			while(rs.next()) {
-				if(map.containsKey(rs.getString(""))) {
-					map.get(rs.getString(""));
+				if(map.containsKey(rs.getString("Øvelsesgruppe.Navn"))) {
+					map.get(rs.getString("Øvelsesgruppe.Navn"));
 				}
 				else {
-					map.put(rs.getString(""), new ArrayList<String>(Arrays.asList(rs.getString("OvelsesNavn"))));
+					map.put(rs.getString("Øvelsesgruppe.Navn"), new ArrayList<String>(Arrays.asList(rs.getString("Navn"))));
 				}
 			}
 			
@@ -177,13 +176,13 @@ public class AdminController {
 			for(String gruppenavn: map.keySet()) {
 				List<Ovelse> ovelser = new ArrayList<Ovelse>();
 				for(String ovelseNavn : map.get(gruppenavn)) {
-					//Hen Ovelse beskrivelse
-					String tmpStmt = "Select * from Ovelse where navn = ?";
+					//Henter Ovelse beskrivelse
+					String tmpStmt = "Select * from FriØvelse where navn = ?";
 					PreparedStatement pr = conn.prepareStatement(tmpStmt);
 					pr.setString(1, ovelseNavn);
 					ResultSet tmpRes = pr.executeQuery();
 					if(tmpRes.next()) {
-						Ovelse ovelse = new Ovelse(ovelseNavn,tmpRes.getString("beskrivelse"));
+						Ovelse ovelse = new Ovelse(ovelseNavn,tmpRes.getString("Beskrivelse"));
 						ovelser.add(ovelse);
 					}
 					

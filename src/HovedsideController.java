@@ -38,7 +38,7 @@ public class HovedsideController {
 	
 	@FXML 
 	public void handleKrav5Button() throws SQLException, Exception {
-		Connection myConn = new Main().connect();
+		Connection myConn = ConnectionSQL.connect();
 		System.out.println(AdminController.getPrecentBiggerThan5(myConn));
 	}
 	

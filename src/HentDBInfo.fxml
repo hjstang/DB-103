@@ -35,13 +35,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label text="Se øvelser i en øvelsesgruppe?&#10;(gruppenavn)" textFill="#e8e2e2" GridPane.rowIndex="2">
+            <Label text="Vil du se øvelsene i hver gruppe?" textFill="#e8e2e2" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <TextField fx:id="seResultatloggFelt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="seØvelseFelt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="velg1" mnemonicParsing="false" onAction="#handleVelg1Button" text="Velg" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="40.0" />
@@ -52,7 +51,7 @@
                   <Insets left="40.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="velg3" mnemonicParsing="false" onAction="#handleVelg3Button" text="Velg" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button fx:id="velg3" mnemonicParsing="false" onAction="#handleVelg3Button" text="Velg" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>

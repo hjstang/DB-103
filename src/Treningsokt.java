@@ -35,4 +35,33 @@
 		public Date getDato() {
 			return dato;
 		}
+
+
+		public Time getTidspunkt() {
+			return this.tidspunkt;
+		}
+
+
+		public int getVarighet() {
+			// TODO Auto-generated method stub
+			return this.varighet;
+		}
+
+
+		public int getPersonligForm() {
+			// TODO Auto-generated method stub
+			return this.personligForm;
+		}
+
+
+		public int getPrestasjon() {
+			// TODO Auto-generated method stub
+			return this.prestasjon;
+		}
+
+
+		public String getNotat() {
+			// TODO Auto-generated method stub
+			return this.notat;
+		}
 	}

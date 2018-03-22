@@ -1,6 +1,5 @@
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.sql.Date;
 import java.util.List;
@@ -28,24 +27,33 @@ public class HentDBInfo {
 	
 	@FXML 
 	public void handleVelg1Button() throws SQLException, Exception {
+		String resultat = "Dato \t\t Tidspunkt \t Varighet \t Form \t Prestasjon \t Notat\n";
        int antall = Integer.parseInt(seOktFelt.getText());
        System.out.println(antall);
-       Connection myConn = new Main().connect();
-       List<Treningsokt> resultater = AdminController.getNTreningsokter(myConn, antall);
-       System.out.println("De " + antall + "siste treningsøktene: ");
-       for (Treningsokt resultat : resultater) {
-    	   System.out.println(resultat);
+       Connection myConn = ConnectionSQL.connect();
+       List<Treningsokt> treningsokter = AdminController.getNTreningsokter(myConn, antall);
+       //System.out.println("De " + antall + "siste treningsøktene: ");
+       for (Treningsokt treningsokt : treningsokter) {
+    	   resultat += treningsokt.getDato().toString() + "\t";
+  		resultat += treningsokt.getTidspunkt().toString() + "            ";
+  		resultat += treningsokt.getVarighet() + "\t\t  ";
+    		resultat += treningsokt.getPersonligForm() + "\t\t";
+    		resultat += treningsokt.getPrestasjon() + "\t\t\t";
+    		resultat += treningsokt.getNotat() + "\n";
+    	   
+    	   
        }
-       
+       System.out.println(resultat);
 	}
+	
 	
 	@FXML 
 	public void handleVelg2Button() throws SQLException, Exception {
 		
 		List<String> input = Arrays.asList(seResultatloggFelt.getText().split(","));
-		Connection myConn = new Main().connect();
-		List<String> dateString1 = Arrays.asList(input.get(0).split("."));
-		List<String> dateString2 = Arrays.asList(input.get(1).split("."));
+		Connection myConn = ConnectionSQL.connect();
+		List<String> dateString1 = Arrays.asList(input.get(0).split("-"));
+		List<String> dateString2 = Arrays.asList(input.get(1).split("-"));
 		int day1 = Integer.parseInt(dateString1.get(0));
 		int month1 = Integer.parseInt(dateString1.get(1));
 		int year1 = Integer.parseInt(dateString1.get(2));
@@ -59,24 +67,22 @@ public class HentDBInfo {
        
 	}
 	
+	
 	@FXML 
 	public void handleVelg3Button() throws SQLException, Exception {
-		String ovelsesGruppe = seØvelseFelt.getText();
-       Connection myConn = new Main().connect();
-       List<Ovelse> ovelserIGruppe = null;
+		String resultat = "Øvelsesgruppe \t Øvelse\n";
+		//String ovelsesGruppe = seØvelseFelt.getText();
+       Connection myConn = ConnectionSQL.connect();
        List<Ovelsesgruppe> grupper = AdminController.getOvelsesgruppe(myConn);
        for (Ovelsesgruppe ovelsesgruppe : grupper) {
-    	   		if (ovelsesgruppe.getNavn().equals(ovelsesGruppe)) {
-    	   			ovelserIGruppe = ovelsesgruppe.getOvelser();
-    	   			
+    	   		for (Ovelse øvelse : ovelsesgruppe.getOvelser()) {
+    	   			resultat += ovelsesgruppe.getNavn() + "\t\t\t" + øvelse.getNavn() + "\n";
     	   		}
+ 
        }
-       System.out.println("Øvelsene i" + ovelsesGruppe + "er: ");
-       for (Ovelse ovelse : ovelserIGruppe) {
-    	   System.out.println(ovelse);
+       System.out.println(resultat);
        }
        
-	}
 	
 	@FXML
 	Button returnButton;

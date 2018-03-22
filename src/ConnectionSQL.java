@@ -1,13 +1,17 @@
 import java.sql.*;
+import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.Executor;
 
-public abstract class ConnectionSQL {
+public final class ConnectionSQL {
 	
-	protected Connection conn;
+	
+
+	public static Connection conn;
 	public ConnectionSQL() {
 	}
 	
-	public Connection connect() throws InstantiationException, IllegalAccessException {
+	public static Connection connect() throws InstantiationException, IllegalAccessException {
 		try{ 
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		

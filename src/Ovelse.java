@@ -28,4 +28,8 @@ public class Ovelse {
 	public void setApparatBeskrivelse(String apparatBeskrivelse) {
 		this.apparatBeskrivelse = apparatBeskrivelse;
 	}
+	public String getNavn() {
+		return this.navn;
+	}
 }
+

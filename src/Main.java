@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 
-public class Main extends ConnectionSQL{
+public class Main{
 
 	public void init() {
 	}
@@ -14,7 +14,7 @@ public class Main extends ConnectionSQL{
 	
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		Connection myConn = new Main().connect();
+		Connection myConn = ConnectionSQL.connect();
 		System.out.println("Testing");
 		Date dateStart = new Date(2017,4,4);
 		Date dateEnd = new Date(2019,4,4);

@@ -36,7 +36,7 @@ public class TreningsController extends Application{
 		@FXML
 		public void registrerTreningsokt() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerTreningsoktFelt.getText().split(","));
-			Connection myConn = new Main().connect();
+			Connection myConn = ConnectionSQL.connect();
 			List<String> dateString = Arrays.asList(input.get(0).split("-"));
 			int year = Integer.parseInt(dateString.get(0));
 			int month = Integer.parseInt(dateString.get(1));
@@ -57,18 +57,18 @@ public class TreningsController extends Application{
 		@FXML
 		public void registrerOvelse() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelseFelt.getText().split(","));
-			Connection myConn = new Main().connect();
+			Connection myConn = ConnectionSQL.connect();
 			String navn = input.get(0);
 			String beskrivelse = input.get(1);
 			
 			AdminController.settinnOvelse(myConn, navn, beskrivelse);
-			System.out.println("Exercise added");
+			System.out.println("Friøvelse lagt til");
 		}
 		
 		@FXML
 		public void registrerApparat() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerApparatFelt.getText().split(","));
-			Connection myConn = new Main().connect();
+			Connection myConn = ConnectionSQL.connect();
 			String navn = input.get(0);
 			String beskrivelse = input.get(1);
 			
@@ -80,7 +80,7 @@ public class TreningsController extends Application{
 		@FXML
 		public void registrerOvelsesgruppe() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelsesgruppeFelt.getText().split(","));
-			Connection myConn = new Main().connect();
+			Connection myConn = ConnectionSQL.connect();
 			String navn = input.get(0);
 			
 			AdminController.settInnOvelsesgruppe(myConn, navn);
@@ -91,7 +91,7 @@ public class TreningsController extends Application{
 		@FXML
 		public void registrerOvelseIGruppe() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelseIGruppeFelt.getText().split(","));
-			Connection myConn = new Main().connect();
+			Connection myConn = ConnectionSQL.connect();
 			String groupName = input.get(0);
 			String exerciseName = input.get(1);
 			
@@ -103,7 +103,7 @@ public class TreningsController extends Application{
 		@FXML
 		public void registrerOvelseITreningsokt() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelseITreningsoktFelt.getText().split(","));
-			Connection myConn = new Main().connect();
+			Connection myConn = ConnectionSQL.connect();
 			List<String> dateString = Arrays.asList(input.get(0).split("-"));
 			int year = Integer.parseInt(dateString.get(0));
 			int month = Integer.parseInt(dateString.get(1));
@@ -121,7 +121,7 @@ public class TreningsController extends Application{
 		@FXML
 		public void registrerOvelsePaaApparat() throws SQLException, InstantiationException, IllegalAccessException {
 			List<String> input = Arrays.asList(registrerOvelsePaaApparatFelt.getText().split(","));
-			Connection myConn = new Main().connect();
+			Connection myConn = ConnectionSQL.connect();
 			String exerciseName = input.get(0);
 			String machineName = input.get(1);
 			
